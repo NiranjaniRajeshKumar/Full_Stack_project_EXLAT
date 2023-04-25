@@ -1,0 +1,79 @@
+<h1 class="text-center">TEACHER MANAGEMENT</h1>
+<h2> Teacher List</h2>
+
+
+
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by teacher"
+          [(ngModel)]="firstName"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-dark"
+            type="button"
+            (click)="searchByName()"
+          >
+            Search
+          </button>
+
+        </div>
+        <a> <pre>           </pre></a>
+        <div class="dropdown">
+          <button class="btn btn-dark" type="button"  (click)="fetchTechTeach()">
+            VeiwBy Primary Teachers
+          </button>
+        </div>
+
+        
+      </div>
+    </div>
+
+
+<table class = "table table-sucess table-hover">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name </th>
+            <th>Email Id</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Qualification</th>
+            <th>Teaching Subject</th>
+            <th>Teaching Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let teacher of teachers" >
+            <td> {{ teacher.firstName }} </td>
+            <td> {{ teacher.lastName }} </td>
+            <td> {{ teacher.email }} </td>
+            <td> {{ teacher.mobno }} </td>
+            <td> {{ teacher.address }} </td>
+            <td> {{ teacher.qualification }} </td>
+            <td> {{ teacher.teaching_subject}} </td>
+            <td>{{teacher.teachingType}}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="mixed outlined example">
+                <button (click) = "updateTeacher(teacher.teacher_id)" class="btn btn-warning">Update</button>
+                <button (click) = "confirmDelete(teacher)" class = "btn btn-dark" > Delete</button>
+                <button (click) = "teacherDetails(teacher.teacher_id)" class = "btn btn-warning" > View</button>
+                </div>
+            </td>
+        </tr>
+        <tr scope="row" *ngIf="teachers.length ===0">
+            <td colspan="9" class="text-center">No Record Found</td>
+        </tr>
+
+        <div class="btn-group" role="group" aria-label="mixed outlined example" *ngIf="teachers.length !==0">
+          <button  (click) = "confirmremoveAllTeachers()" class = "btn btn-danger">DeleteAll</button>
+        </div>
+    </tbody>
+</table>
+
+

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-dark bg-dark" >
+  <ul class = "nav nav-pills navbar-dark" >
+      <li class = "nav-item">
+          <a *ngIf="loginService.isUserLoggedIn()" style=" color:#ff7200;"routerLink="teachers" routerLinkActive="active" class="nav-link" >Teacher List</a>
+      </li>
+      <li class = "nav-item">
+          <a  *ngIf="loginService.isUserLoggedIn()" style=" color:#ff7200;" routerLink="create-teacher" routerLinkActive="active" class="nav-link" >Add New Teacher</a>
+      </li>
+      <li class = "nav-item">
+        <a  *ngIf="loginService.isUserLoggedIn()" style=" color:#ff7200;"  routerLink="home" routerLinkActive="active" class="nav-link" >Home</a>
+    </li>
+      <li class = "nav-item">
+        <a  *ngIf="!loginService.isUserLoggedIn()"style=" color:#ff7200; text-align:right;"   routerLink="login" routerLinkActive="active" class="nav-link" >Login</a>
+      </li>
+      <li class = "nav-item">
+        <a  *ngIf="loginService.isUserLoggedIn()" style=" color:#ff7200;"  routerLink="logout" routerLinkActive="active" class="nav-link" >LogOut</a>
+      </li>
+  </ul>
+</nav>
+
+
+<div class = "container">
+    <router-outlet></router-outlet>
+</div>
+<div class="p-3 mb-2 bg-danger-subtle text-emphasis-danger"></div>
+
